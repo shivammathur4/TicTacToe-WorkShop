@@ -45,6 +45,21 @@ namespace TicTacToe_WorkShop
                 Choice();
         }
 
+        public void ShowBoard()
+        {
+            TicTacToe game = new TicTacToe();
+            for (int i = 1; i < 10; i++)
+            {
+                if (i % 3 == 0)
+                {
+                    Console.Write("{0}\n", board[i]);
+                    if (i != 9)
+                        Console.WriteLine("-----------");
+                }
+                else
+                    Console.Write(" {0} |", board[i]);
+            }
+        }
 
 
     }
