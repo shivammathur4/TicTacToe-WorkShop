@@ -15,6 +15,7 @@ namespace TicTacToe_WorkShop
             game.CreateBoard();
             game.Choice();
             game.ShowBoard();
+            Console.ReadKey();
         }
     }
 }
