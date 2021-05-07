@@ -13,8 +13,9 @@ namespace TicTacToe_WorkShop
             Console.WriteLine("TicTacToe");
             TicTacToe game = new TicTacToe();
             game.CreateBoard();
-            game.Choice();
+            char choice = game.Choice();
             game.ShowBoard();
+            game.PlayerMovement(choice);
             Console.ReadKey();
         }
     }

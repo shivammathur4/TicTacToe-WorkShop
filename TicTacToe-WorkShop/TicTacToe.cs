@@ -9,6 +9,7 @@ namespace TicTacToe_WorkShop
     class TicTacToe
     {
         public char[] board;
+        //public char player;
 
         public TicTacToe()
         {
@@ -23,18 +24,18 @@ namespace TicTacToe_WorkShop
             }
         }
 
-        public void Choice()
+        public char Choice()
         {
             Console.WriteLine("Enter your choice. \nX \n0");
-            string userChoice = Console.ReadLine();
+            char userSign = Convert.ToChar(Console.ReadLine());
             string choice;
-            switch (userChoice)
+            switch (userSign)
             {
-                case "X":
+                case 'X':
                     choice = "You Chose: X";
                     break;
-                case "0":
-                    choice = "You Chose: 0";
+                case 'O':
+                    choice = "You Chose: O";
                     break;
                 default:
                     choice = "Invalid Choice";
@@ -43,6 +44,7 @@ namespace TicTacToe_WorkShop
             Console.WriteLine(choice);
             if (choice == "Invalid Choice")
                 Choice();
+            return userSign;
         }
 
         public void ShowBoard()
@@ -61,6 +63,32 @@ namespace TicTacToe_WorkShop
             }
         }
 
+        public bool PositionCheck(int position)
+        {
+            if (board[position] == ' ')
+                return true;
+            else
+            {
+                Console.WriteLine("Position already occupied");
+                return false;
+            }
+        }
 
+        public void PlayerMovement(char choice)
+        {
+            Console.WriteLine("Select the position you want to play on");
+            int userChoice = int.Parse(Console.ReadLine());
+            bool emptyPosition = PositionCheck(userChoice);
+            if (emptyPosition == true)
+            {
+                board[userChoice] = choice;
+                ShowBoard();
+            }
+            else
+            {
+                Console.WriteLine("Try Again");
+                PlayerMovement(choice);
+            }
+        }
     }
 }
